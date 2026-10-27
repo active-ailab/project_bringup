@@ -1,0 +1,490 @@
+<title>驱动组{{NEW}}项目Bringup报告</title>
+<callout emoji="💡" background-color="light-blue">
+<p><b>Skill Phase3 导出</b></p>
+<p><b>填色</b>：单元格 <span background-color="light-yellow">浅黄 = Skill/Agent 自动填</span>；<span background-color="rgb(255,200,140)">橙色 = 人工填</span>。表头灰底仅作列名。禁止编造；导出后不得残留 <code>{{…}}</code>。</p>
+</callout>
+
+<h1 seq="auto">表格建立时间点</h1>
+<p>建议 Pre-T0（T0 板子回来前一周）由驱动侧 PL 建立本报告。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>填表时间</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>驱动侧 PL</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>Skill 导出日期</p></td>
+<td background-color="light-yellow"><p>{{DATE}}</p></td>
+</tr>
+</tbody>
+</table>
+
+<h1 seq="auto">硬件变更确认（PL，硬件基带开发人员）</h1>
+<p>本节确认「相对基础项目改了什么、材料齐不齐」。器件/GPIO 的<strong>代码落地与签字</strong>在第 4 节。</p>
+<ol>
+<li>
+<p><b>参考项目名称（必须）</b></p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>平台</p></td>
+<td background-color="light-yellow"><p>{{PLATFORM}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>基础项目 BASE</p></td>
+<td background-color="light-yellow"><p>{{BASE}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>本项目 NEW</p></td>
+<td background-color="light-yellow"><p>{{NEW}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>一句话说明</p></td>
+<td background-color="light-yellow"><p>本项目基于 {{BASE}} 硬件变更而来</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><b>原理图变更（必须）</b></p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>原理图 / 硬件变更履历链接</p></td>
+<td background-color="rgb(255,200,140)"><p>待填（粘贴文档）</p><p>【例 <cite doc-id="doccnwQhGU3EAR4Bte2wjWVotTc" file-type="doc" title="Cheetah(Madrid-R)硬件变更履历" type="doc"></cite> 】</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><b>关键器件变更（必须）</b></p>
+<p><b>表 A · PDCP 准出 vs 实板</b>（人工核对，与软件适配清单无关时也可填「无差异」）</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>PDCP 准出器件</p></th>
+<th background-color="light-gray"><p>硬件主板实际器件</p></th>
+<th background-color="light-gray"><p>差异原因</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填 / 无差异</p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>Phase2 硬件配置表</p></td>
+<td background-color="light-yellow"><p>{{HW_DOC}}</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><b>GPIO 变更（必须）</b></p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>GPIO 表链接</p></td>
+<td background-color="light-yellow"><p>{{GPIO_DOC}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>差异明细</p></td>
+<td background-color="light-yellow"><p>见第 4 节「GPIO 变更」表（仅 BASE≠NEW）</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><b>与目标一致的硬件环境（必须）</b></p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>板子 / 机器</p></td>
+<td background-color="rgb(255,200,140)"><p>待填（数量、版本；建议 ≥2）</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><b>软件项目计划</b></p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>计划文档</p></td>
+<td background-color="rgb(255,200,140)"><p>待填（粘贴链接）</p><p>【例 <cite doc-id="doccn5VzpCESv4Qe0DlTwoNa5md" file-type="doc" title="CSS（Cheetah/Swift/Swordfish）软件项目计划" type="doc"></cite>】</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+
+<h1 seq="auto">Codebase 的建立&amp;确认</h1>
+
+<h2 seq="auto">建立项目开发环境（架构师）</h2>
+<p>由 PL 提需求给架构师。下列三项均为人工确认；defconfig 文件清单可先看下一节自动表。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>检查项</p></th>
+<th background-color="light-gray"><p>状态 / 说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>各固件 manifest 已建立</p></td>
+<td background-color="rgb(255,200,140)"><p>待确认</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>各固件 defconfig 已建立</p></td>
+<td background-color="rgb(255,200,140)"><p>待确认（对照下节自动列出的文件）</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>发布 CI 已对接且可出包</p></td>
+<td background-color="rgb(255,200,140)"><p>待确认</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 seq="auto">检查代码分支和配置（PL）</h2>
+<p>浅黄列由 Phase1/仓库填写（含 manifest xml 名称与 revision/分支字串）；备注列橙色。无对应固件时 defconfig 填「无」。远程 git 分支须架构师/CI 创建。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray" rowspan="2"><p>固件类型</p></th>
+<th background-color="light-gray" colspan="3"><p>{{NEW}}（本项目）</p></th>
+<th background-color="light-gray" colspan="3"><p>{{BASE}}（基础项目）</p></th>
+<th background-color="light-gray" rowspan="2"><p>备注</p></th>
+</tr>
+<tr>
+<th background-color="light-gray"><p>xml（名称,分支）</p></th>
+<th background-color="light-gray"><p>defconfig</p></th>
+<th background-color="light-gray"><p>board</p></th>
+<th background-color="light-gray"><p>xml（名称,分支）</p></th>
+<th background-color="light-gray"><p>defconfig</p></th>
+<th background-color="light-gray"><p>board</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>jlinkbin</p></td>
+<td background-color="light-yellow"><p>{{MF_JLINK_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_JLINK_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_JLINK_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_JLINK_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>bootloader</p></td>
+<td background-color="light-yellow"><p>{{MF_BOOT_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_BOOT_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_BOOT_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_BOOT_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>recovery</p></td>
+<td background-color="light-yellow"><p>{{MF_RECOVERY_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_RECOVERY_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_RECOVERY_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_RECOVERY_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>生产固件</p></td>
+<td background-color="light-yellow"><p>{{MF_FCT_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_FCT_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_FCT_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_FCT_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>用户固件</p></td>
+<td background-color="light-yellow"><p>{{MF_USER_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_USER_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_USER_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_USER_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>硬测固件</p></td>
+<td background-color="light-yellow"><p>{{MF_HT_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_HT_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_HT_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_HT_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>sensorhub</p></td>
+<td background-color="light-yellow"><p>{{MF_SH_NEW}}</p></td>
+<td background-color="light-yellow"><p>{{DC_SH_NEW}}</p></td>
+<td background-color="light-yellow"><p>products/{{NEW}}</p></td>
+<td background-color="light-yellow"><p>{{MF_SH_BASE}}</p></td>
+<td background-color="light-yellow"><p>{{DC_SH_BASE}}</p></td>
+<td background-color="light-yellow"><p>products/{{BASE}}</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>board 完整路径前缀：<code>platform/board/{{PLATFORM}}/</code>。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>Phase1 核对</p></th>
+<th background-color="light-gray"><p>结果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>products/{{NEW}} 存在</p></td>
+<td background-color="light-yellow"><p>{{P1_PRODUCTS_OK}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>主 defconfig 存在且板型 =y</p></td>
+<td background-color="light-yellow"><p>{{P1_DEFCONFIG_OK}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>Config.in 含新板型与 CUSTOMIZE_DIR</p></td>
+<td background-color="light-yellow"><p>{{P1_CONFIGIN_OK}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>仓库路径</p></td>
+<td background-color="light-yellow"><p>{{REPO}}</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 seq="auto">检查项目的 defconfig（PL）</h2>
+<p>对比 NEW 与 BASE 各固件实际生成的 <code>.config</code>，说明差异影响。Agent 不自动跑 menuconfig 时整表人工填。</p>
+<p>例：<cite doc-id="CdTpwI664ia7iRkuoFBckm19nCg" file-type="wiki" title="XX项目-驱动领域config检查" type="doc"></cite> </p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>固件类型</p></th>
+<th background-color="light-gray"><p>主要差异点</p></th>
+<th background-color="light-gray"><p>影响说明</p></th>
+<th background-color="light-gray"><p>结论</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 seq="auto">检查项目宏的相关代码（PL）</h2>
+<p>板型宏变化后，相关 <code>#if</code> / 挂接需已覆盖 NEW。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>项</p></th>
+<th background-color="light-gray"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-gray"><p>板型宏</p></td>
+<td background-color="light-yellow"><p>{{BASE_BOARD_SYM}} → {{NEW_BOARD_SYM}}</p></td>
+</tr>
+<tr>
+<td background-color="light-gray"><p>Phase1 挂接摘要</p></td>
+<td background-color="light-yellow"><p>{{P1_HOOK_SUMMARY}}</p></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>代码路径</p></th>
+<th background-color="light-gray"><p>修改说明</p></th>
+<th background-color="light-gray"><p>owner</p></th>
+<th background-color="light-gray"><p>确认结果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-yellow"><p>{{MACRO_PATH_1}}</p></td>
+<td background-color="light-yellow"><p>{{MACRO_DESC_1}}</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+</tr>
+</tbody>
+</table>
+
+<h1 seq="auto">硬件变更和确认（PL 和模块负责人）</h1>
+<p>{{NEW}} 相对 {{BASE}} 的<strong>落地与确认</strong>。器件明细见第 2 节 Phase2 硬件配置表链接；本节对「需要改软件的项」写清影响、落点与签字。同型号且仅检查的项可一行摘要或省略。</p>
+
+<h2 seq="auto">关键器件 / 硬件变更落地</h2>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>变更点</p></th>
+<th background-color="light-gray"><p>{{BASE}}</p></th>
+<th background-color="light-gray"><p>{{NEW}}</p></th>
+<th background-color="light-gray"><p>影响固件</p><p>(jlinkbin/boot/recovery/watch/FCT/HT)</p></th>
+<th background-color="light-gray"><p>影响功能</p></th>
+<th background-color="light-gray"><p>适配动作 / 代码落点</p></th>
+<th background-color="light-gray"><p>责任人</p></th>
+<th background-color="light-gray"><p>确认结果</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-yellow"><p>{{CHG_NAME_1}}</p></td>
+<td background-color="light-yellow"><p>{{CHG_BASE_1}}</p></td>
+<td background-color="light-yellow"><p>{{CHG_NEW_1}}</p></td>
+<td background-color="light-yellow"><p>{{CHG_FW_1}}</p></td>
+<td background-color="rgb(255,200,140)"><p>待填（如功耗/存储…）</p></td>
+<td background-color="light-yellow"><p>{{CHG_ACTION_1}}</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p>待填（完成/未完成）</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 seq="auto">GPIO 变更</h2>
+<p>仅列出 BASE 信号 ≠ NEW 信号的脚。结果取值：已改 / 仅清单 / 待定。</p>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>脚标识</p></th>
+<th background-color="light-gray"><p>{{BASE}} 信号</p></th>
+<th background-color="light-gray"><p>{{NEW}} 信号</p></th>
+<th background-color="light-gray"><p>代码文件</p></th>
+<th background-color="light-gray"><p>结果</p></th>
+<th background-color="light-gray"><p>模块 owner</p></th>
+<th background-color="light-gray"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-yellow"><p>{{GPIO_PIN_1}}</p></td>
+<td background-color="light-yellow"><p>{{GPIO_BASE_1}}</p></td>
+<td background-color="light-yellow"><p>{{GPIO_NEW_1}}</p></td>
+<td background-color="light-yellow"><p>{{GPIO_FILE_1}}</p></td>
+<td background-color="light-yellow"><p>{{GPIO_RESULT_1}}</p></td>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="light-yellow"><p>{{GPIO_NOTE_1}}</p></td>
+</tr>
+</tbody>
+</table>
+
+<h2 seq="auto">风险与未做项</h2>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>#</p></th>
+<th background-color="light-gray"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="light-yellow"><p>1</p></td>
+<td background-color="light-yellow"><p>{{RISK_1}}</p></td>
+</tr>
+<tr>
+<td background-color="light-yellow"><p>2</p></td>
+<td background-color="light-yellow"><p>{{RISK_2}}</p></td>
+</tr>
+</tbody>
+</table>
+<p>无风险时两行均填「无」。</p>
+
+<h1 seq="auto">Bringup 过程日报</h1>
+<table>
+<thead>
+<tr>
+<th background-color="light-gray"><p>时间</p></th>
+<th background-color="light-gray"><p>今天完成任务</p></th>
+<th background-color="light-gray"><p>明天计划任务</p></th>
+<th background-color="light-gray"><p>风险或者求助</p></th>
+<th background-color="light-gray"><p>备注</p></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td background-color="rgb(255,200,140)"><p>待填</p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+<td background-color="rgb(255,200,140)"><p></p></td>
+</tr>
+</tbody>
+</table>
+
+<h1 seq="auto">检查</h1>
+<p>确认第 4 节变更已映射到第 3 节的代码 / 分支 / defconfig / board。勾选由人工完成。</p>
+<ul>
+<li><checkbox done="false">第 3 节 products、defconfig、Config.in、板型宏与仓库一致</checkbox></li>
+<li><checkbox done="false">第 4 节器件落地表：需改项已改码或已标未完成；仅检查/否已标明</checkbox></li>
+<li><checkbox done="false">第 4 节 GPIO：已改或已标仅清单/待定</checkbox></li>
+<li><checkbox done="false">第 2 节原理图、硬件环境、软件计划已补或已标暂缓</checkbox></li>
+<li><checkbox done="false">浅黄格已无 <code>{{…}}</code> 占位符；橙色格已填或明确「暂缓」</checkbox></li>
+</ul>
+<p></p>
