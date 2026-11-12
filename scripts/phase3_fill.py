@@ -183,7 +183,7 @@ def expand_risk_rows(rows: List[Any]) -> str:
 
 
 def sanitize_callout(xml: str) -> str:
-    """Keep母版 callout（含「项目Bringup SKILL」cite）；只去掉占位清单段。"""
+    """Keep母版 callout（cite +「一键适配项目、并导出报告」）；只去掉占位清单段。"""
     return re.sub(
         r"<p>占位：.*?</p>\s*",
         "",
