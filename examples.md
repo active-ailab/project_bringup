@@ -23,6 +23,23 @@ python3 scripts/phase1_clone_product.py \
 
 确认清单后去掉 `--dry-run`。`--new` 用硬件表原文（勿自行改大小写）。校验：仓库里已有 `products/<new>`、主 defconfig、`Config.in` 板型符号（表勾选不能替代）。
 
+校验通过后**必须询问**（固定话术）：
+
+> 新项目 `<NEW>` 已创建完成，是否要一键将代码上库？
+
+用户答 `是` / `上库` 等后再上库；`否` 则跳过。格式：
+
+- topic = `<NEW>`（例 [stockholm topic](https://gerrit.huami.com/q/topic:%22stockholm%22)）
+- subject：`build |> [<NEW>] 基于<BASE> 复制项目<短名>仓库代码`
+- 短名：`configs`；board 仓用 `board`；其它用 project 路径末段
+- 仅 Phase1 改动仓；完成后给出 `https://gerrit.huami.com/q/topic:%22<NEW>%22`
+
+```bash
+# 例：configs 仓（NEW=stockholm BASE=munich；分支按实际）
+git commit -m "build |> [stockholm] 基于munich 复制项目configs仓库代码"
+git push origin HEAD:refs/for/master%topic=stockholm
+```
+
 ## Phase 2（器件 / GPIO）
 
 三平台（apollo5 / mhs003 / mhs003s）**同一流程**；差异只在 profile 里的代码路径与格式。Skill **不**维护器件型号名单。
@@ -31,9 +48,18 @@ python3 scripts/phase1_clone_product.py \
 
 1. 以仓库确认 Phase1 产物（表勾「已完成」不够）。
 2. 用户投喂：[硬件配置模板](https://zepp.feishu.cn/wiki/OR4Tw7BNRi96gEkmSNUcvzstnMc)（黄格必填：身份/GPIO/器件类型与型号/SKILL配置；供别与备注可选）。
-3. Agent 只分析：校验必填 → GPIO 动态出差异并分类 → 器件逐行按仓库现写法分类 → 输出变更计划（需拍板单列）。
-4. 用户确认范围：`确认全部` / `确认全部，<拍板结论>` / 部分 / `取消`。
+3. Agent 只分析：校验必填 → GPIO 动态出差异并分类 → 从飞书 §3 **逐行**加载全部器件（类型/供别/BASE型号/NEW型号/SKILL配置/拟动作，禁止缩成一团）→ 按 NEW 关旧开新（不问只开/双开）→ 输出变更计划。
+4. 用户确认范围：`确认全部` / `确认全部，保留 <旧配置…>` / 部分 / `取消`。确认话术末尾必须写：`要保留的旧器件配置需要额外说明`
 5. 确认后再改代码；改完做校验。
+6. 校验通过后：有 Phase2 改动则**必须询问** `项目 <NEW> 硬件适配代码已完成，是否要一键将代码上库？`；无改动则说明无需上库。  
+   确认后：`build |> [<NEW>] 适配<短名>仓库硬件`，topic=`<NEW>`（短名同 Phase1；只 stage 相关路径）。完成后给 topic 链接。
+
+```bash
+# 例：board 仓（NEW=stockholm）
+git add <Phase2相关路径…>
+git commit -m "build |> [stockholm] 适配board仓库硬件"
+git push origin HEAD:refs/for/master%topic=stockholm
+```
 
 GPIO 链接先判定类型再取数：
 
@@ -90,8 +116,14 @@ python3 scripts/phase3_fill.py \
   --json <replacements.json> --out <filled.xml>
 ```
 
-   §2 器件明细不抄表，只填硬件配置表链接；§4 仅 BASE≠NEW（需落地）行展开。
-3. 对**副本** `lark-cli docs +update --command overwrite`（Windows `cmd`）；勿改母版当项目报告。
+   同步母版时用 `docs +fetch --detail full`（保留填色）；callout 保留「项目Bringup SKILL」cite。
+   §2 只填参考项目 + 硬件配置表/GPIO 链接；§3.2「项目信息核对」母版备注 `(填实际路径)`/`(全大写)` 只作填表说明，报告写 `BOARD_DIR` 实路径与全大写 `NEW_BOARD_SYM`，禁止把备注原文带进报告；§3.4 按仓库汇总（首行「xxx 仓库：」，下列该仓改动文件；说明用「从 A 改到 B」写清）；§4 仅 BASE≠NEW（需落地）行展开；待定/未改完标深黄。
+3. 对**副本**（Windows `cmd`；勿改母版）：
+```bash
+lark-cli docs +update --doc <副本obj_token或URL> \
+  --command overwrite --doc-format xml \
+  --content @<filled.xml>
+```
 4. `+fetch` 确认无残留 `{{…}}`；列出待补【人工】项。
 
 手工结构参考：[Windermere Bringup](https://zepp.feishu.cn/wiki/PFL1wqzQjiWR7mkATqhcsyf2nof)
